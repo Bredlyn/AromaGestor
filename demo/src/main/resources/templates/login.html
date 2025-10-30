@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Iniciar Sesión - AromaGestor</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #fbe9e7, #f3e5f5);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            width: 350px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #6a1b9a;
+            margin-bottom: 25px;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 95%;
+            padding: 10px;
+            background-color: #6a1b9a;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #8e24aa;
+        }
+
+        .error, .logout {
+            color: red;
+            margin-bottom: 10px;
+        }
+
+        .logout {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+<div class="login-container">
+    <h1>AromaGestor</h1>
+
+
+    <div th:if="${param.error}" class="error">Usuario o contraseña incorrectos</div>
+    <div th:if="${param.logout}" class="logout">Sesión cerrada exitosamente</div>
+
+    <form method="post" th:action="@{/login}">
+        <input type="text" name="username" placeholder="Usuario" required>
+        <input type="password" name="password" placeholder="Contraseña" required>
+        <button type="submit">Iniciar sesión</button>
+    </form>
+</div>
+</body>
+</html>

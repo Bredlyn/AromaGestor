@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>AromaGestor</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #fbe9e7, #f3e5f5);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            background-color: white;
+            padding: 40px 60px;
+            border-radius: 20px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 400px;
+        }
+
+        h1 {
+            color: #7b1fa2;
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 15px 0;
+        }
+
+        a {
+            display: block;
+            text-decoration: none;
+            color: white;
+            background-color: #ab47bc;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #8e24aa;
+            transform: scale(1.05);
+        }
+
+        footer {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 th:text="${mensaje}">Bienvenido a AromaGestor</h1>
+    <ul>
+        <li><a href="/productos">Ver Productos</a></li>
+        <li><a href="/clientes">Ver Clientes</a></li>
+        <li><a href="/ventas">Ver Ventas</a></li>
+    </ul>
+    <footer>© 2025 AromaGestor</footer>
+</div>
+</body>
+</html>

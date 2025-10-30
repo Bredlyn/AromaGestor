@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Clientes</title>
+    <style>
+        body {
+              font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+              background-color: #ffffff;
+              margin: 0;
+              padding: 0;
+              display: flex;
+              height: 100vh;
+              align-items: center;
+              justify-content: center;
+        }
+    </style>
+</head>
+<body>
+<h1>Lista de Clientes</h1>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Email</th>
+    </tr>
+    <tr th:each="cliente : ${clientes}">
+        <td th:text="${cliente.id}"></td>
+        <td th:text="${cliente.nombre}"></td>
+        <td th:text="${cliente.email}"></td>
+    </tr>
+</table>
+
+<h2>Agregar Cliente</h2>
+<form th:action="@{/clientes/guardar}" th:object="${cliente}" method="post">
+    <label>Nombre:</label>
+    <input type="text" th:field="*{nombre}" required>
+    <label>Email:</label>
+    <input type="email" th:field="*{email}" required>
+    <button type="submit">Guardar</button>
+</form>
+</body>
+</html>

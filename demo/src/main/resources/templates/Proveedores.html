@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Proveedores</title>
+</head>
+<body>
+<h1>Lista de Proveedores</h1>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Producto</th>
+        <th>Cantidad Producto</th>
+    </tr>
+    <tr th:each="proveedor : ${proveedores}">
+        <td th:text="${proveedor.id}"></td>
+        <td th:text="${proveedor.nombre}"></td>
+        <td th:text="${proveedor.producto}"></td>
+        <td th:text="${proveedor.cantidadProducto}"></td>
+    </tr>
+</table>
+
+<h2>Agregar Proveedor</h2>
+<form th:action="@{/proveedores/guardar}" method="post">
+    <label>Nombre:</label>
+    <input type="text" name="nombre" required>
+    <label>Producto:</label>
+    <input type="text" name="producto" required>
+    <label>Cantidad Producto:</label>
+    <input type="number" name="cantidadProducto" required>
+    <button type="submit">Guardar</button>
+</form>
+</body>
+</html>
