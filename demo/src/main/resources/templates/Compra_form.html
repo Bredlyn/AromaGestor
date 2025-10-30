@@ -1,23 +1,136 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
     <title>Nueva Compra</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f3f8ff;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            background-color: #007acc;
+            padding: 15px 30px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            transition: opacity 0.2s;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 120px auto;
+            background-color: white;
+            padding: 40px 50px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #007acc;
+            margin-bottom: 25px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #005fa3;
+        }
+
+        select, input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        select:focus, input:focus {
+            border-color: #007acc;
+        }
+
+        button {
+            background-color: #007acc;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #005fa3;
+        }
+
+        .btn-back {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .btn-back a {
+            color: #007acc;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .btn-back a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-<h1>Registrar Nueva Compra</h1>
 
-<form th:action="@{/compras/guardar}" th:object="${compra}" method="post">
-    <label>Producto:</label>
-    <select th:field="*{producto}">
-        <option th:each="prod : ${productos}" th:value="${prod}" th:text="${prod.nombre}"></option>
-    </select>
-    <br/>
+<th:block th:replace="navbar :: body"></th:block>
 
-    <label>Cantidad Comprada:</label>
-    <input type="number" th:field="*{cantidadComprada}" required/>
-    <br/>
+<div class="container">
+    <h1>Registrar Nueva Compra</h1>
 
-    <button type="submit">Guardar Compra</button>
-</form>
+    <form th:action="@{/compras/guardar}" th:object="${compra}" method="post">
+        <label>Producto:</label>
+        <select th:field="*{producto}" required>
+            <option value="" disabled selected>Seleccione un producto</option>
+            <option th:each="prod : ${productos}"
+                    th:value="${prod}"
+                    th:text="${prod.nombre}"></option>
+        </select>
+
+        <label>Cantidad Comprada:</label>
+        <input type="number" th:field="*{cantidadComprada}" min="1" placeholder="Ingrese cantidad" required>
+
+        <button type="submit">Guardar Compra</button>
+    </form>
+
+    <div class="btn-back">
+        <a th:href="@{/compras}">← Volver a Compras</a>
+    </div>
+</div>
+
 </body>
 </html>

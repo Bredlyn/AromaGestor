@@ -64,6 +64,8 @@
     </style>
 </head>
 <body>
+<th:block th:replace="navbar :: body"></th:block>
+
 <div class="container">
     <h1 th:text="${mensaje}">Bienvenido a AromaGestor</h1>
     <ul>
@@ -71,6 +73,9 @@
         <li><a href="/clientes">Ver Clientes</a></li>
         <li><a href="/ventas">Ver Ventas</a></li>
     </ul>
+    <form th:action="@{/logout}" method="post">
+        <button type="submit" class="logout-button">Cerrar Sesión</button>
+    </form>
     <footer>© 2025 AromaGestor</footer>
 </div>
 </body>

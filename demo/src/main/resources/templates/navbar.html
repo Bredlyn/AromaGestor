@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navegación</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    nav {
+      background-color: #b3e5fc; /* azul claro */
+      padding: 12px 0;
+      text-align: center;
+      font-family: 'Segoe UI', sans-serif;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    nav a {
+      color: #004d66;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 12px 18px;
+      margin: 0 6px;
+      border-radius: 6px;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    nav a:hover {
+      background-color: #81d4fa;
+      color: #002633;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-container">
+    <a th:href="@{/index}">Inicio</a>
+    <a th:href="@{/productos}">Productos</a>
+    <a th:href="@{/clientes}">Clientes</a>
+    <a th:href="@{/ventas}">Ventas</a>
+    <a th:href="@{/proveedores}">Proveedores</a>
+    <a th:href="@{/login}">Cerrar Sesión</a>
+  </div>
+</nav>
+
+</body>
+</html>

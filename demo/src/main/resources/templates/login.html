@@ -71,6 +71,8 @@
 
     <div th:if="${param.error}" class="error">Usuario o contraseña incorrectos</div>
     <div th:if="${param.logout}" class="logout">Sesión cerrada exitosamente</div>
+    <div th:if="${param.expired}" class="message expired">
+        La sesión ha expirado. Inicia sesion nuevamente</div>
 
     <form method="post" th:action="@{/login}">
         <input type="text" name="username" placeholder="Usuario" required>

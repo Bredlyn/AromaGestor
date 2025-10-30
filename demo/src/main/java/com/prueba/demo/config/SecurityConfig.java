@@ -41,6 +41,7 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/login", "/css/**", "/js/**", "/images/**").permitAll()
+                        .requestMatchers("/index").authenticated()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
@@ -54,11 +55,13 @@ public class SecurityConfig {
                         .logoutUrl("/logout")
                         .logoutSuccessUrl("/login?logout=true")
                         .invalidateHttpSession(true)
-                        .clearAuthentication(true)
+                        .deleteCookies("JSESSIONID")
                         .permitAll()
+                )
+                .sessionManagement(session -> session
+                        .invalidSessionUrl("/login?expired=true")
                 );
 
         return http.build();
     }
-
 }

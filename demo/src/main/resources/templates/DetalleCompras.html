@@ -1,30 +1,172 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Compras</title>
+    <meta charset="UTF-8">
+    <title>Gestión de Compras</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f3f8ff;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            background-color: #007acc;
+            padding: 15px 30px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            transition: opacity 0.2s;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 30px;
+            max-width: 1100px;
+            margin: 120px auto;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 30px 40px;
+        }
+
+        .table-section {
+            flex: 2;
+        }
+
+        h1 {
+            text-align: center;
+            color: #007acc;
+            margin-bottom: 25px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th, td {
+            padding: 12px 16px;
+            text-align: center;
+            border-bottom: 1px solid #dddddd;
+        }
+
+        th {
+            background-color: #e3f1ff;
+            color: #005fa3;
+        }
+
+        tr:hover {
+            background-color: #f1faff;
+        }
+
+        .form-section {
+            flex: 1;
+            background-color: #f8fbff;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #d0e4f7;
+        }
+
+        h2 {
+            text-align: center;
+            color: #007acc;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #005fa3;
+        }
+
+        input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus {
+            border-color: #007acc;
+        }
+
+        button {
+            background-color: #007acc;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #005fa3;
+        }
+    </style>
 </head>
 <body>
-<h1>Lista de Compras</h1>
-<table>
-    <tr>
-        <th>ID</th>
-        <th>ID Producto</th>
-        <th>Cantidad Comprada</th>
-    </tr>
-    <tr th:each="compra : ${compras}">
-        <td th:text="${compra.id}"></td>
-        <td th:text="${compra.producto.id}"></td>
-        <td th:text="${compra.cantidadComprada}"></td>
-    </tr>
-</table>
 
-<h2>Registrar Compra</h2>
-<form th:action="@{/compras/guardar}" method="post">
-    <label>ID Producto:</label>
-    <input type="number" name="productoId" required>
-    <label>Cantidad:</label>
-    <input type="number" name="cantidadComprada" required>
-    <button type="submit">Guardar</button>
-</form>
+<th:block th:replace="navbar :: body"></th:block>
+
+<div class="container">
+
+    <div class="table-section">
+        <h1>Lista de Compras</h1>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>ID Producto</th>
+                <th>Cantidad Comprada</th>
+            </tr>
+            <tr th:each="compra : ${compras}">
+                <td th:text="${compra.id}"></td>
+                <td th:text="${compra.producto.id}"></td>
+                <td th:text="${compra.cantidadComprada}"></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="form-section">
+        <h2>Registrar Compra</h2>
+        <form th:action="@{/compras/guardar}" method="post">
+            <label>ID Producto:</label>
+            <input type="number" name="productoId" placeholder="Ingrese el ID del producto" required>
+            <label>Cantidad:</label>
+            <input type="number" name="cantidadComprada" placeholder="Ingrese la cantidad" required>
+            <button type="submit">Guardar</button>
+        </form>
+    </div>
+
+</div>
+
 </body>
 </html>
