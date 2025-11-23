@@ -10,13 +10,14 @@
   <h2 class="text-center mb-4">Bienvenido, Vendedor</h2>
 
   <div class="list-group">
-    <a href="/ventas/nueva" class="list-group-item list-group-item-action">Registrar Nueva Venta</a>
+    <a th:href="@{/ventas/nueva}" class="list-group-item list-group-item-action">Registrar Nueva Venta</a>
     <a th:href="@{/ventas}" class="list-group-item list-group-item-action">Ver Ventas</a>
     <a th:href="@{/productos}" class="list-group-item list-group-item-action">Ver Productos</a>
+    <a th:href="@{/clientes}" class="list-group-item list-group-item-action">Ver Clientes</a>
   </div>
 
   <div class="mt-4 text-center">
-    <a th:href="@{/login}" class="btn btn-danger">Cerrar Sesión</a>
+    <a th:href="@{/logout}" class="btn btn-danger">Cerrar Sesión</a>
   </div>
 </div>
 

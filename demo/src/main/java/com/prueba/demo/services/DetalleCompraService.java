@@ -1,16 +1,20 @@
 package com.prueba.demo.services;
 
-
-import com.prueba.demo.entity.DetalleCompra;
+import com.prueba.demo.document.DetalleCompra;
 import com.prueba.demo.repository.DetalleCompraRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service
 public class DetalleCompraService {
+
     @Autowired
     private DetalleCompraRepository detalleCompraRepository;
+
+    @Autowired
+    private ProductoService productoService;
 
     public List<DetalleCompra> listar() {
         return detalleCompraRepository.findAll();
@@ -20,18 +24,14 @@ public class DetalleCompraService {
         return detalleCompraRepository.save(detalleCompra);
     }
 
-    public void eliminar(Long id) {
+    public void eliminar(String id) {
         detalleCompraRepository.deleteById(id);
     }
-    @Autowired
-    private ProductoService productoService;
 
     public void guardarCompra(DetalleCompra detalleCompra) {
-        Long idProducto = detalleCompra.getProducto().getId();
+        String idProducto = detalleCompra.getProductoId(); // <- CORREGIDO
         int cantidad = detalleCompra.getCantidad();
         productoService.agregarStock(idProducto, cantidad);
         detalleCompraRepository.save(detalleCompra);
     }
-
-
 }

@@ -3,50 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <title>Gestión de Compras</title>
+
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f3f8ff;
+            background-color: #eef4ff;
             margin: 0;
             padding: 0;
         }
 
+
         nav {
-            background-color: #007acc;
-            padding: 15px 30px;
+            background-color: #0066cc;
+            padding: 18px 30px;
             position: fixed;
             top: 0;
             width: 100%;
             display: flex;
             justify-content: center;
-            gap: 30px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            gap: 35px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+            z-index: 1000;
         }
 
         nav a {
             color: white;
-            text-decoration: none;
             font-weight: bold;
-            font-size: 16px;
-            transition: opacity 0.2s;
+            font-size: 17px;
+            text-decoration: none;
+            transition: opacity 0.2s ease-in-out;
         }
 
         nav a:hover {
-            opacity: 0.8;
+            opacity: .75;
         }
+
 
         .container {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
-            gap: 30px;
+            gap: 35px;
             max-width: 1100px;
-            margin: 120px auto;
-            background-color: #ffffff;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            padding: 30px 40px;
+            margin: 140px auto 60px auto;
+            background-color: white;
+            padding: 40px 50px;
+            border-radius: 20px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.1);
         }
+
 
         .table-section {
             flex: 2;
@@ -54,82 +58,90 @@
 
         h1 {
             text-align: center;
-            color: #007acc;
+            color: #0066cc;
             margin-bottom: 25px;
+            font-size: 26px;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 15px;
-        }
-
-        th, td {
-            padding: 12px 16px;
-            text-align: center;
-            border-bottom: 1px solid #dddddd;
+            border-radius: 12px;
+            overflow: hidden;
+            background: white;
+            margin-top: 10px;
         }
 
         th {
-            background-color: #e3f1ff;
-            color: #005fa3;
+            background-color: #dfeeff;
+            color: #004f99;
+            padding: 14px;
+        }
+
+        td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #e6e6e6;
         }
 
         tr:hover {
-            background-color: #f1faff;
+            background-color: #f6faff;
         }
+
 
         .form-section {
             flex: 1;
             background-color: #f8fbff;
-            padding: 20px;
-            border-radius: 10px;
-            border: 1px solid #d0e4f7;
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid #c9ddf2;
+            box-shadow: inset 0 0 6px rgba(0,0,0,0.05);
         }
 
         h2 {
             text-align: center;
-            color: #007acc;
+            color: #0066cc;
             margin-bottom: 20px;
+            font-size: 22px;
         }
 
         form {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 15px;
         }
 
         label {
             font-weight: bold;
-            color: #005fa3;
+            color: #004f99;
         }
 
         input {
             padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
+            border: 1px solid #b8cce0;
+            border-radius: 10px;
             outline: none;
-            transition: border-color 0.3s ease;
+            transition: border-color .3s ease;
         }
 
         input:focus {
-            border-color: #007acc;
+            border-color: #0066cc;
         }
 
         button {
-            background-color: #007acc;
+            background-color: #0066cc;
             color: white;
             border: none;
-            border-radius: 8px;
-            padding: 10px;
+            border-radius: 10px;
+            padding: 12px;
             font-size: 16px;
             font-weight: bold;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: background-color .3s;
         }
 
         button:hover {
-            background-color: #005fa3;
+            background-color: #004f99;
         }
     </style>
 </head>
@@ -141,15 +153,17 @@
 
     <div class="table-section">
         <h1>Lista de Compras</h1>
+
         <table>
             <tr>
                 <th>ID</th>
-                <th>ID Producto</th>
+                <th>Producto</th>
                 <th>Cantidad Comprada</th>
             </tr>
+
             <tr th:each="compra : ${compras}">
                 <td th:text="${compra.id}"></td>
-                <td th:text="${compra.producto.id}"></td>
+                <td th:text="${compra.producto.nombre}"></td>
                 <td th:text="${compra.cantidadComprada}"></td>
             </tr>
         </table>
@@ -157,11 +171,14 @@
 
     <div class="form-section">
         <h2>Registrar Compra</h2>
+
         <form th:action="@{/compras/guardar}" method="post">
-            <label>ID Producto:</label>
-            <input type="number" name="productoId" placeholder="Ingrese el ID del producto" required>
+            <label>Producto:</label>
+            <input type="number" name="productoId" placeholder="ID del producto" required>
+
             <label>Cantidad:</label>
-            <input type="number" name="cantidadComprada" placeholder="Ingrese la cantidad" required>
+            <input type="number" name="cantidadComprada" placeholder="Cantidad" required>
+
             <button type="submit">Guardar</button>
         </form>
     </div>

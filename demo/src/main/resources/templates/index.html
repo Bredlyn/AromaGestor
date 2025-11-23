@@ -3,80 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <title>AromaGestor</title>
+
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #fbe9e7, #f3e5f5);
             margin: 0;
             padding: 0;
-            display: flex;
-            height: 100vh;
-            align-items: center;
-            justify-content: center;
+            background-color: #f5f7fa;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
+
+        .navbar {
+            background-color: #263238;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            color: #80cbc4;
+        }
+
+
         .container {
-            background-color: white;
-            padding: 40px 60px;
-            border-radius: 20px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+            width: 60%;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0px 6px 18px rgba(0,0,0,0.1);
             text-align: center;
-            width: 400px;
         }
 
         h1 {
-            color: #7b1fa2;
-            font-size: 2rem;
+            color: #009688;
+            font-size: 32px;
             margin-bottom: 30px;
         }
 
-        ul {
-            list-style-type: none;
-            padding: 0;
+        .menu-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 20px;
         }
 
-        li {
-            margin: 15px 0;
-        }
-
-        a {
-            display: block;
-            text-decoration: none;
-            color: white;
-            background-color: #ab47bc;
+        .menu-links a {
+            background-color: #009688;
             padding: 12px;
             border-radius: 10px;
-            font-size: 1.1rem;
+            color: white;
+            text-decoration: none;
             font-weight: bold;
-            transition: all 0.3s ease;
+            transition: 0.2s;
         }
 
-        a:hover {
-            background-color: #8e24aa;
-            transform: scale(1.05);
+        .menu-links a:hover {
+            background-color: #00796b;
+        }
+
+
+        .logout-button {
+            background-color: #d32f2f;
+            color: white;
+            padding: 10px 18px;
+            font-size: 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .logout-button:hover {
+            background-color: #b71c1c;
         }
 
         footer {
             margin-top: 20px;
-            font-size: 0.9rem;
             color: #777;
         }
     </style>
 </head>
+
 <body>
-<th:block th:replace="navbar :: body"></th:block>
+
+<div class="navbar">
+    <a href="/index">Inicio</a>
+    <a href="/productos">Productos</a>
+    <a href="/clientes">Clientes</a>
+    <a href="/ventas">Ventas</a>
+    <a href="/proveedores">Proveedores</a>
+    <a href="/logout">Cerrar Sesión</a>
+</div>
 
 <div class="container">
     <h1 th:text="${mensaje}">Bienvenido a AromaGestor</h1>
-    <ul>
-        <li><a href="/productos">Ver Productos</a></li>
-        <li><a href="/clientes">Ver Clientes</a></li>
-        <li><a href="/ventas">Ver Ventas</a></li>
-    </ul>
+
+    <div class="menu-links">
+        <a href="/productos">Ver Productos</a>
+        <a href="/clientes">Ver Clientes</a>
+        <a href="/ventas">Ver Ventas</a>
+    </div>
+
     <form th:action="@{/logout}" method="post">
-        <button type="submit" class="logout-button">Cerrar Sesión</button>
+        <button class="logout-button" type="submit">Cerrar Sesión</button>
     </form>
+
     <footer>© 2025 AromaGestor</footer>
 </div>
+
 </body>
 </html>

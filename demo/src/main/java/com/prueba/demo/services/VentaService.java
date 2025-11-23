@@ -1,6 +1,6 @@
 package com.prueba.demo.services;
 
-import com.prueba.demo.entity.Venta;
+import com.prueba.demo.document.Venta;
 import com.prueba.demo.repository.VentaRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -22,4 +22,3 @@ public class VentaService {
         ventaRepository.save(venta);
     }
 }
-

@@ -1,10 +1,8 @@
 package com.prueba.demo.repository;
 
-import com.prueba.demo.entity.Producto;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.prueba.demo.document.Producto;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface ProductoRepository extends JpaRepository<Producto, Long> {
+public interface ProductoRepository extends MongoRepository<Producto, String> {
 
 }
-
-

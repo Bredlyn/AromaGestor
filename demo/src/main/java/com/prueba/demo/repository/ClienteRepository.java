@@ -1,12 +1,8 @@
 package com.prueba.demo.repository;
 
+import com.prueba.demo.document.Cliente;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
-import com.prueba.demo.entity.Cliente;
-import org.springframework.data.jpa.repository.JpaRepository;
-
-
-public interface ClienteRepository extends JpaRepository<Cliente, Long> {
+public interface ClienteRepository extends MongoRepository<Cliente, String> {
 
 }
-
-

@@ -1,31 +1,32 @@
 package com.prueba.demo.controller;
 
-import com.prueba.demo.entity.Usuario;
+import com.prueba.demo.document.Usuario;
 import com.prueba.demo.services.UsuarioService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/usuarios")
 public class UsuarioController {
 
-    @Autowired
-    private UsuarioService usuarioService;
+    private final UsuarioService usuarioService;
 
-    @GetMapping()
+    public UsuarioController(UsuarioService usuarioService) {
+        this.usuarioService = usuarioService;
+    }
+
+    @GetMapping
     public List<Usuario> listar() {
         return usuarioService.listar();
     }
 
     @PostMapping
-    public void guardar(@RequestBody Usuario usuario) {
-        usuarioService.guardar(usuario);
+    public Usuario guardar(@RequestBody Usuario usuario) {
+        return usuarioService.guardar(usuario);
     }
 
     @DeleteMapping("/{id}")
-    public void eliminar(@PathVariable Long id) {
+    public void eliminar(@PathVariable String id) {
         usuarioService.eliminar(id);
     }
 }

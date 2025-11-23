@@ -12,10 +12,6 @@ public class HomeController {
         model.addAttribute("mensaje", "Bienvenido a AromaGestor");
         return "index";
     }
-    @GetMapping("/")
-    public String home(Model model) {
-        model.addAttribute("mensaje", "Bienvenido a AromaGestor");
-        return "index";
-    }
+
 
 }

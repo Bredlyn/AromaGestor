@@ -2,56 +2,47 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Navegación</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-    }
+  <title>Navbar</title>
 
+  <style>
     nav {
-      background-color: #b3e5fc; /* azul claro */
-      padding: 12px 0;
-      text-align: center;
-      font-family: 'Segoe UI', sans-serif;
-      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+        background-color: #0066cc;       /* azul fuerte como proveedores */
+        padding: 18px 30px;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 35px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.20);
+        z-index: 1000;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
     nav a {
-      color: #004d66;
-      text-decoration: none;
-      font-weight: bold;
-      padding: 12px 18px;
-      margin: 0 6px;
-      border-radius: 6px;
-      transition: background 0.3s ease, color 0.3s ease;
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 17px;
+        transition: opacity .25s;
     }
 
     nav a:hover {
-      background-color: #81d4fa;
-      color: #002633;
-    }
-
-    .nav-container {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 8px;
+        opacity: 0.7;
     }
   </style>
+
 </head>
+
 <body>
 
-<nav>
-  <div class="nav-container">
-    <a th:href="@{/index}">Inicio</a>
-    <a th:href="@{/productos}">Productos</a>
-    <a th:href="@{/clientes}">Clientes</a>
-    <a th:href="@{/ventas}">Ventas</a>
-    <a th:href="@{/proveedores}">Proveedores</a>
-    <a th:href="@{/login}">Cerrar Sesión</a>
-  </div>
+<nav th:fragment="navbar">
+  <a th:href="@{/index}">Inicio</a>
+  <a th:href="@{/productos}">Productos</a>
+  <a th:href="@{/clientes}">Clientes</a>
+  <a th:href="@{/ventas}">Ventas</a>
+  <a th:href="@{/proveedores}">Proveedores</a>
+  <a th:href="@{/logout}">Cerrar Sesión</a>
 </nav>
 
 </body>

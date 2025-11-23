@@ -1,6 +1,6 @@
 package com.prueba.demo.controller;
 
-import com.prueba.demo.entity.Cliente;
+import com.prueba.demo.document.Cliente;
 import com.prueba.demo.services.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +29,7 @@ public class ClienteController {
 
     @DeleteMapping("/{id}")
     @PreAuthorize("hasAuthority('ADMIN')")
-    public void eliminar(@PathVariable Long id) {
+    public void eliminar(@PathVariable String id) {
         clienteService.eliminar(id);
     }
 }

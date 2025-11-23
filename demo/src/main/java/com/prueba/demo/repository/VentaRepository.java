@@ -1,8 +1,7 @@
 package com.prueba.demo.repository;
 
-import com.prueba.demo.entity.Venta;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.prueba.demo.document.Venta;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface VentaRepository extends JpaRepository<Venta, Long> {
-
+public interface VentaRepository extends MongoRepository<Venta, String> {
 }

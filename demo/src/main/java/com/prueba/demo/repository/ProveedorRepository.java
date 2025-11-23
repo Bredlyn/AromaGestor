@@ -1,9 +1,8 @@
 package com.prueba.demo.repository;
 
+import com.prueba.demo.document.Proveedor;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
-import com.prueba.demo.entity.Proveedor;
-import org.springframework.data.jpa.repository.JpaRepository;
-
-public interface ProveedorRepository extends JpaRepository<Proveedor, Long> {
+public interface ProveedorRepository extends MongoRepository<Proveedor, String> {
 
 }

@@ -1,7 +1,7 @@
 package com.prueba.demo.config;
 
 import com.prueba.demo.repository.UsuarioRepository;
-import com.prueba.demo.entity.Usuario;
+import com.prueba.demo.document.Usuario;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -25,7 +25,7 @@ public class SecurityConfig {
 
             return User.withUsername(usuario.getUsername())
                     .password(usuario.getPassword())
-                    .roles(usuario.getRol())
+                    .roles(usuario.getRol().toUpperCase())
                     .build();
         };
     }

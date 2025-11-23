@@ -1,14 +1,15 @@
 package com.prueba.demo.services;
 
-
-import com.prueba.demo.entity.Proveedor;
+import com.prueba.demo.document.Proveedor;
 import com.prueba.demo.repository.ProveedorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service
 public class ProveedorService {
+
     @Autowired
     private ProveedorRepository proveedorRepository;
 
@@ -20,7 +21,7 @@ public class ProveedorService {
         return proveedorRepository.save(proveedor);
     }
 
-    public void eliminar(Long id) {
+    public void eliminar(String id) {
         proveedorRepository.deleteById(id);
     }
 }

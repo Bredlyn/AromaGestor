@@ -1,6 +1,7 @@
 package com.prueba.demo.controller;
 
-import com.prueba.demo.entity.Compra;
+import com.prueba.demo.document.Compra;
+import com.prueba.demo.document.DetalleCompra;
 import com.prueba.demo.services.CompraService;
 import com.prueba.demo.services.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,13 +34,14 @@ public class CompraController {
 
     @PostMapping("/guardar")
     public String guardarCompra(@ModelAttribute Compra compra) {
-        productoService.agregarStock(compra.getProducto().getId(), compra.getCantidad());
+
+        for (DetalleCompra detalle : compra.getDetalles()) {
+            String idProducto = detalle.getProductoId();
+            productoService.agregarStock(idProducto, detalle.getCantidad());
+        }
+
         compraService.guardarCompra(compra);
+
         return "redirect:/compras";
     }
-
 }
-
-
-
-

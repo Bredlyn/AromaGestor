@@ -38,10 +38,10 @@
         .container {
             max-width: 600px;
             margin: 120px auto;
-            background-color: white;
-            padding: 40px 50px;
+            background-color: #ffffff;
             border-radius: 15px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 40px 50px;
         }
 
         h1 {
@@ -113,12 +113,14 @@
     <h1>Registrar Nueva Compra</h1>
 
     <form th:action="@{/compras/guardar}" th:object="${compra}" method="post">
+
         <label>Producto:</label>
-        <select th:field="*{producto}" required>
+        <select th:field="*{productoId}" required>
             <option value="" disabled selected>Seleccione un producto</option>
             <option th:each="prod : ${productos}"
-                    th:value="${prod}"
-                    th:text="${prod.nombre}"></option>
+                    th:value="${prod.id}"
+                    th:text="${prod.nombre}">
+            </option>
         </select>
 
         <label>Cantidad Comprada:</label>

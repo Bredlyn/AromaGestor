@@ -1,6 +1,6 @@
 package com.prueba.demo.controller;
 
-import com.prueba.demo.entity.Cliente;
+import com.prueba.demo.document.Cliente;
 import com.prueba.demo.services.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,6 +27,13 @@ public class ClienteWebController {
     @PreAuthorize("hasAnyAuthority('ADMIN', 'VENDEDOR')")
     public String guardarCliente(@ModelAttribute Cliente cliente) {
         clienteService.guardar(cliente);
+        return "redirect:/clientes";
+    }
+
+    @PostMapping("/eliminar/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public String eliminarCliente(@PathVariable String id) {
+        clienteService.eliminar(id);
         return "redirect:/clientes";
     }
 }

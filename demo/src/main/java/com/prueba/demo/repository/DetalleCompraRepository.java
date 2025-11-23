@@ -1,10 +1,8 @@
 package com.prueba.demo.repository;
 
+import com.prueba.demo.document.DetalleCompra;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
-import com.prueba.demo.entity.DetalleCompra;
-import org.springframework.data.jpa.repository.JpaRepository;
-
-public interface DetalleCompraRepository extends JpaRepository<DetalleCompra, Long> {
+public interface DetalleCompraRepository extends MongoRepository<DetalleCompra, String> {
 
 }
-
